@@ -14,7 +14,8 @@ pipeline {
 
     stage('Maven Bulid') {
       steps {
-        sh '''mvn versions:set -DnewVersion=0.0.$BUILD_NUMBER-SNAPSHOT
+        sh '''cd spring-boot-package-war/
+mvn versions:set -DnewVersion=0.0.$BUILD_NUMBER-SNAPSHOT
 mvn package
 '''
       }
