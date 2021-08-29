@@ -1,5 +1,5 @@
 pipeline {
-  agent ubuntu-slave
+  agent 'ubuntu-slave'
   stages {
     stage('CheckOut Code') {
       steps {
