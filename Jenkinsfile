@@ -43,7 +43,7 @@ mvn clean package'''
 
     stage('Slack Notifcation') {
       steps {
-        slackSend(message: 'The bulis is finsh OK', channel: 'noam-dev')
+        slackSend(message: 'The bulis is finish OK', channel: 'noam-dev', color: '#008000')
       }
     }
 
