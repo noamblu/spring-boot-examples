@@ -14,7 +14,7 @@ pipeline {
 
     stage('Maven Bulid') {
       steps {
-        sh '''mvn versions:set -DnewVersion=0.0.$run_id-SNAPSHOT
+        sh '''mvn versions:set -DnewVersion=0.0.$BUILD_NUMBER-SNAPSHOT
 mvn package
 '''
       }
