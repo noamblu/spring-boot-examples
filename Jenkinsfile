@@ -23,13 +23,15 @@ mvn compile
 
     stage('Maven Test') {
       steps {
-        sh 'mvn test'
+        sh '''cd spring-boot-package-war/
+mvn test'''
       }
     }
 
     stage('Maven Package') {
       steps {
-        sh 'mvn clean packege'
+        sh '''cd spring-boot-package-war/
+mvn clean packege'''
       }
     }
 
