@@ -7,5 +7,12 @@ pipeline {
       }
     }
 
+    stage('Maven Bulid') {
+      steps {
+        sh '''mvn package
+'''
+      }
+    }
+
   }
 }
