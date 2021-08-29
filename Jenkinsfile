@@ -37,7 +37,7 @@ mvn clean package'''
 
     stage('Archive the artifacts') {
       steps {
-        archiveArtifacts(onlyIfSuccessful: true, artifacts: '*')
+        archiveArtifacts(onlyIfSuccessful: true, artifacts: 'packege.zip')
       }
     }
 
