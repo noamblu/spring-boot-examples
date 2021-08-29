@@ -31,7 +31,7 @@ mvn test'''
     stage('Maven Package') {
       steps {
         sh '''cd spring-boot-package-war/
-mvn clean packege'''
+mvn clean package'''
       }
     }
 
