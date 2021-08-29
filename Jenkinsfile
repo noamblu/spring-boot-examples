@@ -35,5 +35,17 @@ mvn clean package'''
       }
     }
 
+    stage('Archive the artifacts') {
+      steps {
+        archiveArtifacts(onlyIfSuccessful: true, artifacts: '*')
+      }
+    }
+
+    stage('Slack Notifcation') {
+      steps {
+        slackSend(message: 'The bulis is finsh OK', channel: 'noam-dev')
+      }
+    }
+
   }
 }
