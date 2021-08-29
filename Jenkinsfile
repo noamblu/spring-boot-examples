@@ -43,7 +43,7 @@ mvn clean package'''
 
     stage('Slack Notifcation') {
       steps {
-        slackSend(message: "${env.JOB_NAME} #${env.BUILD_NUMBER} - Started By ${env.BUILD_USER} (${env.BUILD_URL})", channel: 'noam-dev', color: '#008000')
+        slackSend(message: '${env.JOB_NAME} #${env.BUILD_NUMBER} - Started By ${env.BUILD_USER} (${env.BUILD_URL})', channel: 'noam-dev', color: '#008000')
         cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true)
       }
     }
