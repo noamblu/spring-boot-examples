@@ -12,12 +12,24 @@ pipeline {
       }
     }
 
-    stage('Maven Bulid') {
+    stage('Maven Compile') {
       steps {
         sh '''cd spring-boot-package-war/
 mvn versions:set -DnewVersion=0.0.$BUILD_NUMBER-SNAPSHOT
-mvn package
+mvn compile
 '''
+      }
+    }
+
+    stage('Maven Test') {
+      steps {
+        sh 'mvn test'
+      }
+    }
+
+    stage('Maven Package') {
+      steps {
+        sh 'mvn clean packege'
       }
     }
 
