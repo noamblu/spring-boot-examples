@@ -41,12 +41,13 @@ mvn clean package'''
         cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true)
       }
     }
-
-    stage('Slack Notifcation') {
-      steps {
-        slackSend(message: "${env.JOB_NAME} #${env.BUILD_NUMBER} - Started By ${env.BUILD_USER} (${env.BUILD_URL})", channel: 'noam-dev', color: '#008000')
-      }
-    }
-
   }
+   post {
+       success {
+          slackSend(message: "${env.JOB_NAME} #${env.BUILD_NUMBER} - Started By ${env.BUILD_USER} (${env.BUILD_URL}) Finsh OK", channel: 'noam-dev', color: '#008000')
+       }
+       failure {
+          slackSend(message: "${env.JOB_NAME} #${env.BUILD_NUMBER} - Started By ${env.BUILD_USER} (${env.BUILD_URL}) Finsh with error", channel: 'noam-dev', color: '#FF0000')
+       }
+    }
 }
