@@ -39,7 +39,6 @@ mvn clean package'''
       steps {
         archiveArtifacts(onlyIfSuccessful: true, artifacts: '**/target/*.war')
         cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true)
-        sh 'exit 1'
       }
     }
 
