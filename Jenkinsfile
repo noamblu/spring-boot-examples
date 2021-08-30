@@ -38,13 +38,13 @@ mvn clean package'''
     stage('Archive the artifacts') {
       steps {
         archiveArtifacts(onlyIfSuccessful: true, artifacts: '**/target/*.war')
+        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true)
       }
     }
 
     stage('Slack Notifcation') {
       steps {
-        slackSend(message: '$JOB_NAME #$BUILD_NUMBER - Started By $BUILD_USER ($BUILD_URL)', channel: 'noam-dev', color: '#008000')
-        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenSuccess: true, cleanWhenUnstable: true)
+        slackSend(message: "${env.JOB_NAME} #${env.BUILD_NUMBER} - Started By ${env.BUILD_USER} (${env.BUILD_URL})", channel: 'noam-dev', color: '#008000')
       }
     }
 
